@@ -6,6 +6,7 @@ function App() {
   const[postdata,setpostdata] = useState([]);
   const[city,setcity] = useState("");
   const[err,seterr] = useState(false);
+  // const[initialdata,setinitialdata]= useState(true);
   // const[msg,setmsg] = useState(" ");
   const[post,setpost] = useState(null);
   const change=(e)=>{
@@ -17,7 +18,11 @@ function App() {
 
       setpost(res.data);
       seterr(false);
-      setpostdata(...postdata,city);
+      // setinitialdata(true);
+      // setpostdata((items)=>[
+      //   ...postdata.slice(-3),
+      //   items
+      // ]);
         console.log(post,postdata);
       }).catch((err)=>{
         seterr(true);
@@ -48,16 +53,7 @@ function App() {
           <div className='name'>Sea Level : <span className='city-name'>{post.main.sea_level}</span></div>
           <div className='name'>Ground Level : <span className='city-name'>{post.main.grnd_level}</span></div>
           
-        </div>:
-        <div>
-{
-   postdata.map((items)=>{
-    return(
-      <li>{items}</li>
-    )
-   })
-}
-        </div>
+        </div>:null
         
       }
     </div>
